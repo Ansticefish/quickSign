@@ -1,6 +1,5 @@
 <template lang="pug">
-div 
-  h1 Hi
+h1 This is my HOME!!!!!
 </template>
 
 <script>

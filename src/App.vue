@@ -1,6 +1,6 @@
 <template lang="pug">
 div#app
-  nav
+  Navbar
   router-view
   button.home-button 簽署新文件
   div.file-button 六角學院
@@ -17,8 +17,12 @@ div#app
 </template>
 
 <script>
+import Navbar from '../src/components/Navbar.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar,
+  }
 }
 </script>
 

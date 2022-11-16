@@ -38,6 +38,12 @@ $h6: 0.625rem; //10px
   font-weight: #{$font-weight};
 }
 
+@mixin flex ($align: flex-start, $justify: stretch) {
+  display: flex;
+  align-items: #{$align};
+  justify-content: #{$justify};
+}
+
 // button style
 %home-button {
   @include containerStyle(468px, 100px, $light-main);
@@ -72,7 +78,7 @@ $h6: 0.625rem; //10px
 }
 
 %nav-button {
-  @include containerStyle(105px, 60px, $light-main);
+  @include containerStyle(fit-content, 100%, $light-main);
   @include fontStyle($h3, $secondary);
   cursor: pointer;
   &:hover, &:active, &:focus {
@@ -86,9 +92,7 @@ $h6: 0.625rem; //10px
 
 %create-sign-btn {
   @include containerStyle(328px, 60px, white, 1px dashed $dark-grey);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex(center, center);
   cursor: pointer;
   & p {
     @include fontStyle($h3, $dark-grey, normal);
