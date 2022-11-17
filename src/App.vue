@@ -74,6 +74,7 @@ html, body {
   letter-spacing: .2rem;
   font-weight: 400;
   background-color: $bg-color;
+  box-sizing: border-box;
 }
 
 .navbar {

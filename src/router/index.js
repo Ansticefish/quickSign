@@ -9,6 +9,23 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/uploadFile',
+    component: () => import('../views/UploadFile.vue'),
+    redirect: { name: 'uploadNew'},
+    children: [
+      {
+        path: 'new',
+        name: 'uploadNew',
+        component: () => import('../components/UploadFileNew.vue'),
+      },
+      {
+        path: 'old',
+        name: 'uploadOld',
+        component: () => import('../components/UploadFileOld.vue'),
+      }
+    ]
   }
 ]
 

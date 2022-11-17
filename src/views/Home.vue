@@ -8,7 +8,7 @@ div.home
     div.title
       img.title__img(src="~@/assets/image/logo-home.png", alt="")
       p 線上簽署，方便快速。
-      button.btn--sign 簽署新文件
+      button.btn--sign(@click="()=> this.$router.push('/uploadFile')") 簽署新文件
   div.right
     img.main-blocks(src="~@/assets/image/home-right.png", alt="")
     img.shadow(src="~@/assets/image/home-shadow.png", alt="")

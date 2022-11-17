@@ -1,0 +1,24 @@
+%uploadFileStyle {
+  @include containerStyle(100%, 93%, $white, none, 0 0 35px 35px);
+  @include flex (center, center);
+  padding: 50px;
+  box-sizing: border-box;
+
+  .upload-area {
+    @include containerStyle(100%, 100%, $white, 1px dashed $dark-grey, 35px);
+    @include flex (center, center);
+    @include fontStyle($h1, $dark-grey);
+    text-align: center;
+
+    &:hover {
+      background-color: $light-main;
+      cursor: pointer;
+    }
+
+    .instruction {
+      img {
+        margin: 39px;
+      }
+    }
+  }
+}
