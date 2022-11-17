@@ -2,7 +2,7 @@
 nav 
   img(src="~@/assets/image/logo-nav.png")
   div.btns
-    button.btns-left 邀請他人簽署
+    button.btns-left(:disabled="true") 邀請他人簽署
     button.btns-mid 簽署新文件
     button.btns-right 登入
 </template>
