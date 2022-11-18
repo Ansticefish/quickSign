@@ -23,12 +23,18 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  @include containerStyle(100vw , 100vh, $mid-grey);
-  @include flex (center, center);
+  @include containerStyle(100vw , fit-content, $mid-grey);
+  // exclude Navbar
+  margin-top: 60px;
+  // set content and footer position
+  @include flex (center, space-between);
+  flex-direction: column;
   box-sizing: border-box;
   .content {
-    @include containerStyle(75vw, 75vh, transparent);
-    margin-bottom: 40px;
+    @include containerStyle(75vw, fit-content, transparent);
+    // to maintain height when the content is few
+    min-height: 75vh;
+    margin: 20px auto;
   }
 }
 

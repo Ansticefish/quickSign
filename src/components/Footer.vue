@@ -23,7 +23,6 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  @include position (fixed, $bottom: 0, $left: 0);
   @include containerStyle(100vw, 100px, $light-main);
   @include flex(center, space-around);
 }

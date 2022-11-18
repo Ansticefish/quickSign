@@ -75,7 +75,6 @@ html, body {
   font-weight: 400;
   background-color: $bg-color;
   box-sizing: border-box;
-  overflow: auto;
 }
 
 .navbar {

@@ -34,7 +34,7 @@ export default {
   name: 'UploadFileOld',
   data () {
     return {
-      files: [1],
+      files: [],
     }
   }
 }
@@ -78,9 +78,8 @@ export default {
     }
   }
   .file-table {
-    height: 60%;
+    height: fit-content;
     margin-top: 30px;
-    overflow-y: auto;
     &__top {
       @include flex(center, space-evenly);
       p {
@@ -100,7 +99,7 @@ export default {
     font-size: $h3;
     letter-spacing: .2rem;
     @include flex (center, space-between);
-    margin-bottom: 25px;
+    margin: 25px;
     &::before, &::after {
       content: '';
       @include containerStyle (calc((100% - 42px)/2), 0, none, 1px solid $dark-grey);
