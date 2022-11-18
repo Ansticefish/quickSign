@@ -1,7 +1,7 @@
 <template lang="pug">
 nav
   div.title-wrapper
-    img(src="~@/assets/image/logo-nav.png")
+    img(src="~@/assets/image/logo-nav.png" @click="()=> this.$router.push('/')")
     span | 簽署新文件
   div.btns
     button.btns-left(:disabled="true") 邀請他人簽署
@@ -24,6 +24,9 @@ nav {
 .title-wrapper {
   @include flex (center, space-between);
   width: 230px;
+  img:hover {
+    cursor: pointer;
+  }
 }
 
 .btns {

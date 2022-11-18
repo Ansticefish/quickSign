@@ -5,11 +5,17 @@ div.container
       router-link(to="/uploadFile/new" :class="{'active': this.$route.name === 'uploadNew'}") 上傳新文件
       router-link( to="/uploadFile/old" :class="['right',{'active': this.$route.name === 'uploadOld'}]") 選擇已上傳文件
     router-view
+  Footer
 </template>
 
 <script>
+import Footer from '../components/Footer.vue'
+
 export default {
   name: 'UploadFile',
+  components: {
+    Footer,
+  }
 }
 
 </script>
@@ -19,10 +25,10 @@ export default {
 .container {
   @include containerStyle(100vw , 100vh, $mid-grey);
   @include flex (center, center);
-  padding-top: 60px;
   box-sizing: border-box;
   .content {
-    @include containerStyle(75vw, 79.6vh, transparent);
+    @include containerStyle(75vw, 75vh, transparent);
+    margin-bottom: 40px;
   }
 }
 

@@ -75,10 +75,11 @@ html, body {
   font-weight: 400;
   background-color: $bg-color;
   box-sizing: border-box;
+  overflow: auto;
 }
 
 .navbar {
-  @include position(absolute, $top: 0, $right: 0);
+  @include position(fixed, $top: 0, $right: 0);
   z-index: 1000;
 }
 
