@@ -113,7 +113,7 @@ $h6: 0.625rem; //10px
 }
 
 %create-sign-btn {
-  @include containerStyle(328px, 60px, white, 1px dashed $dark-grey);
+  @include containerStyle(100%, 60px, white, 1px dashed $dark-grey);
   @include flex(center, center);
   cursor: pointer;
   & p {

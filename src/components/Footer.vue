@@ -12,7 +12,7 @@ footer
       div
   div.buttons
     button.cancel 取消
-    button.open 開啟文件
+    button.open(@click="()=> this.$router.push('/signFile')") 開啟文件
 </template>
 
 <script>

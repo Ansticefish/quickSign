@@ -26,6 +26,11 @@ const routes = [
         component: () => import('../components/UploadFileOld.vue'),
       }
     ]
+  },
+  {
+    path: '/signFile',
+    name: 'signFile',
+    component: () => import('../views/SignFile.vue')
   }
 ]
 
