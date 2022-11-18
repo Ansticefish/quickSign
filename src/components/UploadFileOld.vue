@@ -34,7 +34,7 @@ export default {
   name: 'UploadFileOld',
   data () {
     return {
-      files: [],
+      files: [1],
     }
   }
 }
@@ -79,6 +79,8 @@ export default {
   }
   .file-table {
     height: fit-content;
+    // maintain height when there is not many files
+    min-height: 21vh;
     margin-top: 30px;
     &__top {
       @include flex(center, space-evenly);

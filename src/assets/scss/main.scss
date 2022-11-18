@@ -85,6 +85,10 @@ $h6: 0.625rem; //10px
     width: calc(100%/3);
     text-align: left;
     padding-left: 31px;
+    // deal with words overflow
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &:hover {
     background-color: $light-grey;
