@@ -1,0 +1,6 @@
+%mask {
+  @include position (fixed, $top: 0, $bottom: 0, $right: 0, $left: 0);
+  @include containerStyle (100vw, 100vh, rgba(0, 0, 0, 0.2));
+  @include flex(center, center);
+  z-index: 1000;
+}

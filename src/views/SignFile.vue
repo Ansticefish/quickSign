@@ -14,7 +14,7 @@ div.container
       button.sign
         img(src="~@/assets/image/default-sign.png")
         img(src="~@/assets/image/delete.png")
-      button.create-sign 
+      button.create-sign(@click="createSign")
         p 創建簽名
         img(src="~@/assets/image/pen.png")
       button.upload-sign 
@@ -22,24 +22,32 @@ div.container
         img(src="~@/assets/image/upload-img.png")
   section.edit-area
   Footer.footer
+  //- pop-up windows
+  SignBoard(v-if="openSign")
 </template>
 
 <script>
 import Footer from '../components/Footer.vue'
+import SignBoard from '../components/SignBoard.vue'
 
 export default {
   name: 'SignFile',
   components: {
     Footer,
+    SignBoard,
   },
   data () {
     return {
-      editName: true
+      editName: false,
+      openSign: false
     }
   },
   methods: {
     toggleEditName () {
       this.editName = !this.editName
+    },
+    createSign () {
+      this.openSign = !this.openSign
     }
   }
 }
