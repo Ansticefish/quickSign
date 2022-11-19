@@ -11,36 +11,40 @@ div.container
     div.bottom
       h3 我的簽名
       //- change with data
-      button.sign(v-for="(sign, index) in createdSign" @click="deleteSign(index)")
+      button.sign(v-for="(sign, index) in createdSign" )
         img.sign-created(:src="sign.img")
-        img(src="~@/assets/image/delete.png")
+        img.delete(src="~@/assets/image/delete.png"   @click="deleteSign(index)")
       button.create-sign(@click="createSign")
         p 創建簽名
         img(src="~@/assets/image/pen.png")
-      button.upload-sign 
+      button.upload-sign(@click="UploadingSign")
         p 上傳圖片
         img(src="~@/assets/image/upload-img.png")
   section.edit-area
   Footer.footer
   //- pop-up windows
   SignBoard(v-if="openSign" @close-window="closeWindow" @save-sign="saveSign")
+  UploadSign(v-if="openUpload" @close-window="closeWindow" @save-sign="saveSign")
 </template>
 
 <script>
 import Footer from '../components/Footer.vue'
 import SignBoard from '../components/SignBoard.vue'
+import UploadSign from '../components/UploadSign.vue'
 
 export default {
   name: 'SignFile',
   components: {
     Footer,
     SignBoard,
+    UploadSign,
   },
   data () {
     return {
       createdSign: [],
       editName: false,
-      openSign: false
+      openSign: false,
+      openUpload: false
     }
   },
   methods: {
@@ -50,11 +54,16 @@ export default {
     createSign () {
       this.openSign = !this.openSign
     },
+    UploadingSign () {
+      this.openUpload = !this.openUpload
+    },
     closeWindow () {
       this.openSign = false
+      this.openUpload = false
     },
     saveSign (signs) {
       this.openSign = false
+      this.openUpload = false
       this.createdSign = signs
     },
     deleteSign (index) {

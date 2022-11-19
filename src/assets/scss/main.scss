@@ -132,10 +132,17 @@ $h6: 0.625rem; //10px
   }
   & img {
     margin-left: auto;
+    transition: all .2s;
   }
   .sign-created {
     width: 60%;
     height: 100%;
+    object-fit: contain;
+  }
+  .delete {
+    &:hover {
+      opacity: 0.3;
+    }
   }
 }
 

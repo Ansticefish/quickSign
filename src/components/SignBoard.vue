@@ -142,8 +142,7 @@ export default {
           @extend %open-file-btn;
           margin-left: 15px;
         }
-      }
-      
+      } 
     } 
   }
 }
