@@ -11,8 +11,8 @@ div.container
     div.bottom
       h3 我的簽名
       //- change with data
-      button.sign
-        img(src="~@/assets/image/default-sign.png")
+      button.sign(v-for="sign in createdSign")
+        img.sign-created(:src="sign.img")
         img(src="~@/assets/image/delete.png")
       button.create-sign(@click="createSign")
         p 創建簽名
@@ -38,6 +38,7 @@ export default {
   },
   data () {
     return {
+      createdSign: [],
       editName: false,
       openSign: false
     }
@@ -52,8 +53,17 @@ export default {
     closeWindow () {
       this.openSign = false
     },
-    saveSign () {
+    saveSign (signs) {
       this.openSign = false
+      this.createdSign = signs
+    }
+  },
+  mounted () {
+    const signs = JSON.parse(localStorage.getItem('signs'))
+    if (signs === null) {
+      this.createdSign = []
+    } else {
+      this.createdSign = signs
     }
   }
 }

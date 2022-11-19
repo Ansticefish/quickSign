@@ -29,7 +29,16 @@ export default {
       this.$emit('close-window')
     },
     saveSign() {
-      this.$emit('save-sign')
+      const newSign = this.$refs.signBoard.toDataURL()
+      const signs = JSON.parse(localStorage.getItem('signs'))
+      if (signs === null) {
+        localStorage.setItem('signs', JSON.stringify([{img:newSign}]))
+        this.$emit('save-sign', [{ img: newSign }])
+      } else {
+        signs.push({img:newSign})
+        localStorage.setItem('signs', JSON.stringify(signs))
+        this.$emit('save-sign', signs)
+      }
     },
     startSign ($e) {
       this.isSigning = true
