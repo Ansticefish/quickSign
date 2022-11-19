@@ -3,21 +3,64 @@ div.sign-board
    div.window
      h2 在框格內簽下大名！
      div.board-wrapper
-      canvas
+      canvas(ref="signBoard" @mousedown="startSign" @mousemove="drawSign" @mouseup="finishSign")
       footer.board-footer
         div.color-selectors
-          h2 清除
-          div.black
-          div.blue 
-          div.red
+          h2(@click="clearCanvas") 清除
+          div.black(:class="{'active': color === '#000000' }" @click='()=> this.color = "#000000"')
+          div.blue(:class="{'active': color === '#0038A6'}" @click='()=> this.color = "#0038A6"') 
+          div.red(:class="{'active': color === '#FF0000'}" @click='()=> this.color = "#FF0000"')
         div.btns
-          button.cancel 取消
-          button.finish 簽好了
+          button.cancel(@click="closeWindow") 取消
+          button.finish(@click="saveSign") 簽好了
 </template>
 
 <script>
 export default {
   name: 'SignBoard',
+  data () {
+    return {
+      isSigning: false,
+      color: "#000000"
+    }
+  },
+  methods: {
+    closeWindow() {
+      this.$emit('close-window')
+    },
+    saveSign() {
+      this.$emit('save-sign')
+    },
+    startSign ($e) {
+      this.isSigning = true
+      const canvas = $e.target
+      const ctx = canvas.getContext('2d')
+      ctx.strokeStyle = this.color
+      ctx.beginPath()
+      ctx.moveTo($e.offsetX, $e.offsetY)
+    },
+    drawSign($e) {
+      const canvas = $e.target
+      const ctx = canvas.getContext('2d')
+      ctx.lineTo($e.offsetX, $e.offsetY)
+      if(this.isSigning === false) return
+      ctx.stroke()
+    },
+    finishSign () {
+      this.isSigning = false
+    },
+    clearCanvas () {
+      const canvas = this.$refs.signBoard
+      const ctx = canvas.getContext('2d')
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+  },
+  mounted () {
+    // define canvas size globally
+    const canvas = this.$refs.signBoard
+    canvas.width = canvas.offsetWidth
+    canvas.height = canvas.offsetHeight
+  }
 }
 </script>
 
@@ -51,11 +94,25 @@ export default {
         width: 40%;
         h2 {
           @include fontStyle ($h2, $secondary);
+          transition: opacity .2s;
+          &:hover {
+            opacity: 0.3;
+            cursor: pointer;
+          }
         }
         div {
           @include containerStyle(35px, 35px, $white, 3px solid $white, 50%);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           margin-left: 15px;
+          transition: opacity .2s;
+          &:hover {
+            opacity: 0.3;
+            cursor: pointer;
+          }
+          &.active {
+            opacity: 0.3;
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+          }
         }
         .black {
           background-color: #000000;

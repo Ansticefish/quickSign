@@ -5,7 +5,7 @@ div.container
       h3 文件名稱
       //- when file-name is clicked, toggle its child between p and input
       div.file-name(v-if="!editName" @click="toggleEditName")
-        p 六角學院2022版活動切結書.pdfffffkkkkklllll
+        p 六角學院2022版活動切結書.pdfffffffffffffffffffffffffffffffffffffffff
         img(src="~@/assets/image/edit.png")
       input.edit-file-name(v-else type="text" @click="toggleEditName") 
     div.bottom
@@ -23,7 +23,7 @@ div.container
   section.edit-area
   Footer.footer
   //- pop-up windows
-  SignBoard(v-if="openSign")
+  SignBoard(v-if="openSign" @close-window="closeWindow" @save-sign="saveSign")
 </template>
 
 <script>
@@ -48,6 +48,12 @@ export default {
     },
     createSign () {
       this.openSign = !this.openSign
+    },
+    closeWindow () {
+      this.openSign = false
+    },
+    saveSign () {
+      this.openSign = false
     }
   }
 }
