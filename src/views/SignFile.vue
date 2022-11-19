@@ -11,7 +11,7 @@ div.container
     div.bottom
       h3 我的簽名
       //- change with data
-      button.sign(v-for="sign in createdSign")
+      button.sign(v-for="(sign, index) in createdSign" @click="deleteSign(index)")
         img.sign-created(:src="sign.img")
         img(src="~@/assets/image/delete.png")
       button.create-sign(@click="createSign")
@@ -56,6 +56,10 @@ export default {
     saveSign (signs) {
       this.openSign = false
       this.createdSign = signs
+    },
+    deleteSign (index) {
+      this.createdSign.splice(index, 1)
+      localStorage.setItem('signs', JSON.stringify(this.createdSign))
     }
   },
   mounted () {
