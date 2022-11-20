@@ -16,7 +16,7 @@ export default {
       required: true
     },
     btnCaption: {
-      type: String,
+      type: Array,
       required: true
     }
   },

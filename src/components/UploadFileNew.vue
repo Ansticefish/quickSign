@@ -33,10 +33,9 @@ export default {
         this.showPopups('您的檔案不是PDF檔！', ["我知道了"] )
       } else if (file.size > 10*1024*1024 ) {
         this.showPopups('您的檔案太大了！', ["我知道了"])
-      } else {
-        this.showPopups('檔案上傳成功，請選擇想增加簽名的檔案！', ["我知道了"])
-        // save file to localStorage & vuex
       }
+      this.showPopups('檔案上傳成功，請選擇想增加簽名的檔案！', ["我知道了"])
+      // save file to localStorage & vuex  
     },
     closePopups () {
       this.showPopup = false

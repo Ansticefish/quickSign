@@ -34,8 +34,16 @@ export default {
   name: 'UploadFileOld',
   data () {
     return {
-      files: [1],
+      files: [],
     }
+  },
+  mounted () {
+    const files = JSON.parse(localStorage.getItem('files'))
+    if (files === null) {
+      this.files = []
+    }
+
+    this.files = files
   }
 }
 

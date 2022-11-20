@@ -21,6 +21,7 @@ div.container
         p 上傳圖片
         img(src="~@/assets/image/upload-img.png")
   section.edit-area
+    canvas.pdf-preview(ref="pdfLoader")      
   Footer.footer
   //- pop-up windows
   SignBoard(v-if="openSign" @close-window="closeWindow" @save-sign="saveSign")
@@ -44,7 +45,7 @@ export default {
       createdSign: [],
       editName: false,
       openSign: false,
-      openUpload: false
+      openUpload: false,
     }
   },
   methods: {
