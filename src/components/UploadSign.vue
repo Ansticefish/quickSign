@@ -3,12 +3,13 @@ div.upload
   div.window
     h2 上傳簽名圖檔！
     div.wrapper
-      label.instruction(for="upload" v-if="!uploadedSign")
+      label.instruction(for="upload" v-if="!uploadedSign" ref="label")
         input(type="file" accept=".png, .jpg" id="upload" @change="uploadFile")
         p.instruction__top 點擊此處上傳 或 直接拖曳檔案
         img(src="~@/assets/image/upload-img-big.png")
         p.instruction__bottom (限10MB以下JPG、PNG圖檔)
-      img.preview(v-else :src="uploadedSign")
+      canvas.preview(v-show="uploadedSign" ref="canvasBoard")
+        img(:src="uploadedSign" ref="img")
       footer
         h2(@click="deleteSign") 清除
         div.btns
@@ -30,7 +31,9 @@ export default {
     },
     saveSign () {
       const signs = JSON.parse(localStorage.getItem('signs'))
-      signs.push({ img: this.uploadedSign })
+      // use toDataURL() to create a stabler url for img
+      const newURL = this.$refs.canvasBoard.toDataURL()
+      signs.push({ img: newURL })
       localStorage.setItem('signs', JSON.stringify(signs))
       this.$emit('save-sign', signs)
     },
@@ -46,6 +49,17 @@ export default {
     deleteSign () {
       this.uploadedSign = ''
     }
+  },
+  mounted () {
+    // set up canvas
+    const canvas = this.$refs.canvasBoard
+    canvas.width = this.$refs.label.offsetWidth
+    canvas.height = this.$refs.label.offsetHeight
+    const ctx = canvas.getContext('2d')
+    //when img is loaded, run this code
+    this.$refs.img.onload = () => {
+      ctx.drawImage(this.$refs.img, 0, 0, canvas.offsetWidth, canvas.offsetHeight)
+    } 
   }
 }
 </script>
